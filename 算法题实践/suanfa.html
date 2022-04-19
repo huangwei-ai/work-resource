@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //N叉树的层序遍历
+        // root = [1, null, 3, 2, 4, null, 5, 6]
+        // var levelOrder = function(root) {
+        // const arr = root ? [root] : []
+        // let newArr = []
+        // let lastIndex = 0
+        // let result = []
+        // if (arr[0].lenght > 0) {
+        //     arr[0].forEach((element, index) => {
+        //         if ((element == null && arr[0][index + 1] == null) || (lastIndex == 0 && element == null)) {
+        //             newArr.push(root.slice(lastIndex == 0 ? lastIndex : lastIndex + 1, index))
+        //             lastIndex = index
+        //         }
+        //     });
+        //     newArr.push(root.slice(lastIndex, arr[0].length))
+        //     console.log(newArr)
+        //     newArr.forEach((element) => {
+        //         result.push(element.filter((item) => {
+        //             return item !== null
+        //         }))
+
+        //     })
+        // }
+        // console.log(result)
+        // return result
+        // };
+        // levelOrder(root)
+        //二叉树扁平化
+        // head = [null, 1, 2, 3, 4, 5, 6, null, null, null, 7, 8, 9, 10, null, null, 11, 12, null]
+        // var flatten = function(head) {
+        //     const dfs = (node) => {
+        //         let cur = node;
+        //         // 记录链表的最后一个节点
+        //         let last = null;
+
+        //         while (cur) {
+        //             let next = cur.next;
+        //             //  如果有子节点，那么首先处理子节点
+        //             if (cur.child) {
+        //                 const childLast = dfs(cur.child);
+
+        //                 next = cur.next;
+        //                 //  将 node 与 child 相连
+        //                 cur.next = cur.child;
+        //                 cur.child.prev = cur;
+
+        //                 //  如果 next 不为空，就将 last 与 next 相连
+        //                 if (next != null) {
+        //                     childLast.next = next;
+        //                     next.prev = childLast;
+        //                 }
+
+        //                 // 将 child 置为空
+        //                 cur.child = null;
+        //                 last = childLast;
+        //             } else {
+        //                 last = cur;
+        //             }
+        //             cur = next;
+
+        //         }
+        //         console.log(last)
+        //         return last;
+        //     }
+
+        //     dfs(head);
+        //     console.log(head)
+        //     return head;
+
+        // };
+        // const res = flatten(head)
+        // console.log(res)
+        // 给定四个整数 sx , sy ，tx 和 ty，如果通过一系列的转换可以从起点 (sx, sy) 到达终点 (tx, ty)，则返回 true，否则返回 false。
+        // 从点 (x, y) 可以转换到 (x, x+y)  或者 (x+y, y)。
+
+        // var reachingPoints = function(sx, sy, tx, ty) {
+        //     while (tx != ty) {
+        //         switch (true) {
+        //             case sx == tx && sy == ty:
+        //                 return true;
+        //             case tx < sx || ty < sy:
+        //                 return false;
+        //             case tx > ty:
+        //                 {
+        //                     let x = (tx - sx) % ty + sx;
+        //                     x = (x > sx && x > ty) ? x - ty : x;
+        //                     tx = tx == x ? x - ty : x;
+        //                     break;
+        //                 }
+        //             case ty > tx:
+        //                 {
+        //                     let y = (ty - sy) % tx + sy;
+        //                     y = (y > sy && y > tx) ? y - tx : y;
+        //                     ty = ty == y ? y - tx : y;
+        //                     break;
+        //                 }
+        //         }
+        //     }
+        //     return sx == tx && sy == ty;
+
+        // };
+        // console.log(reachingPoints(1, 1, 3, 10))
+        //数组中的两数之和等于target，找出两个数的index
+        // var twoSum = function(nums, target) {
+        //     for (let i = 0, len = nums.length; i < len - 1; i++) {
+        //         for (let j = i + 1; j < len; j++) {
+        //             if (nums[i] + nums[j] == target) {
+        //                 return [i, j]
+        //             }
+        //         }
+        //     }
+        //     return null;
+        // };
+        // nums = [2, 7, 11, 15, 5, 4, 8, 1], target = 9
+        // console.log(twoSum(nums, target))
+
+        // 两个数组的的数相加，大于10往后面一位进1
+        // l1 = [9, 9, 9, 9, 9, 9, 9], l2 = [9, 9, 9, 9]
+        // l1 = [2, 4, 3], l2 = [5, 6, 4]
+
+        // function ListNode(val, next) {
+        //     this.val = (val === undefined ? 0 : val)
+        //     this.next = (next === undefined ? null : next)
+        // }
+        // var addTwoNumbers = function(l1, l2) {
+        //     if (!l1 && !l2) return null
+        //         // 链表头
+        //     let head = null
+        //         // 当前链表位置
+        //     tail = null
+        //         // 存放当前计算的值
+        //     let sum = 0
+        //         // 存放进位
+        //     let remainder = 0
+
+        //     while (l1 || l2) {
+        //         //  取读链表中当前位置的值(指针)
+        //         let n1 = l1 ? l1.val : 0
+        //         let n2 = l2 ? l2.val : 0
+        //             // 计算
+        //         sum = n1 + n2 + remainder
+        //             // 计算进位(满十进一)
+        //         remainder = Math.floor(sum / 10)
+        //             // 存入计算的值(取个位)
+        //         if (!head) {
+        //             // 链表头
+        //             head = tail = new ListNode(sum % 10)
+        //         } else {
+        //             // 链表向下链接
+        //             tail.next = new ListNode(sum % 10)
+        //                 // 更新链表位置(指针++)
+        //             tail = tail.next
+        //         }
+        //         // 更新链表位置(指针++)
+        //         if (l1) {
+        //             l1 = l1.next
+        //         }
+        //         if (l2) {
+        //             l2 = l2.next
+        //         }
+        //     }
+
+        //     // 存在进位 则链表下一项进一位
+        //     if (remainder) tail.next = new ListNode(1)
+        //     console.log(head)
+        //     return head
+
+        // };
+        // addTwoNumbers(l1, l2)
+
+        // var findMedianSortedArrays = function(nums1, nums2) {
+        //     // 合并数组
+        //     const arr = [...nums1, ...nums2]
+        //         // 如果数组只有一位 直接返回该数字
+        //     if (arr.length <= 1) return arr[0]
+        //         // 把数组按照正序排序
+        //     arr.sort(function(a, b) {
+        //             return a - b
+        //         })
+        //         // 数组长度
+        //     const len = arr.length
+        //         // 判断数组长度奇还是偶
+        //         // 奇数返回
+        //     if (len % 2 !== 0) return arr[(len - 1) / 2]
+        //         // 偶数处理 截取中间的俩个数字
+        //     const oArr = arr.slice(len / 2 - 1, len / 2 + 1)
+        //     return (oArr[0] + oArr[1]) / 2
+        // };
+        // findMedianSortedArrays([3], [-1, -2])
+
+        // var convert = function(s, numRows) {
+        //     let arr = new Array(numRows)
+        //     let list = []
+        //     if (arr.length < 2) {
+        //         return s
+        //     }
+        //     for (let i = 0; i < s.length; i++) {
+        //         const num = i % (numRows + numRows - 2)
+        //         if (num < numRows) {
+        //             arr[num] = arr[num] ? [...arr[num], s[i]] : [s[i]]
+        //         } else {
+        //             let t = numRows - (num % (numRows - 1)) - 1
+        //             arr[t] = arr[t] ? [...arr[t], s[i]] : [s[i]]
+        //         }
+        //     }
+        //     arr.forEach((item) => {
+        //         list = [...list, ...item]
+        //     })
+        //     console.log(list.join(''))
+        //     return list
+        // };
+        // s = "PAYPALISHIRING",
+        //     numRows = 3
+        // convert(s, numRows)
+
+        // var reverse = function(x) {
+        //     const c = Number((Math.abs(x) + '').split('').reverse().join(''))
+        //     return x < 0 ? -c : c
+        // };
+        // x = -123
+        // reverse(x)
+
+
+        var maxArea = function(height) {
+            // arr = new Array(height.length)
+            let res
+            for (let i = 0; i < height.length; i++) {
+                for (let j = i + 1; j < height.length; j++) {
+                    if (height[i] > height[j]) {
+                        res = height[j] * (j - i) > res ? height[j] * (j - i) : res
+                    } else {
+                        res = height[i] * (j - i) > res ? height[i] * (j - i) : res
+                    }
+                }
+            }
+
+            return res
+        };
+        maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7])
+    </script>
+</body>
+
+</html>
